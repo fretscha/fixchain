@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # Minimal assertion helpers for the test suite.
 # Source this from each test_*.sh. Counters are file-local.
 

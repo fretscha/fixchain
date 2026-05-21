@@ -6,7 +6,9 @@ set -uo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$HERE/.." && pwd)"
 
+# shellcheck source=tests/lib/assert.sh
 source "$HERE/lib/assert.sh"
+# shellcheck source=tests/lib/fixtures.sh
 source "$HERE/lib/fixtures.sh"
 
 ANALYZE="$ROOT/analyze_chain.sh"

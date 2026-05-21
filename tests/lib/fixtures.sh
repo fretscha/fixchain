@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # PKI fixture builders for the test suite.
 # All identifiers come from RFC 2606 reserved names (`example`, `test`)
 # and a fictional "Example Org" — never any real-world organisation.

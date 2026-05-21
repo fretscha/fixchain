@@ -7,7 +7,9 @@ set -uo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$HERE/.." && pwd)"
 
+# shellcheck source=tests/lib/assert.sh
 source "$HERE/lib/assert.sh"
+# shellcheck source=tests/lib/fixtures.sh
 source "$HERE/lib/fixtures.sh"
 
 FETCH="$ROOT/fetch_chain.sh"
@@ -43,7 +45,11 @@ describe "fetch_chain — bad usage"
 
 OUT=$("$FETCH" 2>&1); RC=$?
 assert_contains "$OUT" "Usage:" "no args → prints usage"
-[[ "$RC" -ne 0 ]] && _t_pass "exits non-zero" || _t_fail "exits non-zero" "got $RC"
+if [[ "$RC" -ne 0 ]]; then
+    _t_pass "exits non-zero"
+else
+    _t_fail "exits non-zero" "got $RC"
+fi
 
 OUT=$("$FETCH" --not-a-real-flag example.com 2>&1); RC=$?
 assert_exit       1 "$RC" "unknown flag → exits 1"

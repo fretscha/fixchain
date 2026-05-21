@@ -43,7 +43,6 @@ fi
 
 log_ok()   { printf '  %s✓%s %s\n' "$C_GREEN"  "$C_RESET" "$1" >&2; }
 log_warn() { printf '  %s⚠%s %s\n' "$C_YELLOW" "$C_RESET" "$1" >&2; }
-log_err()  { printf '  %s✗%s %s\n' "$C_RED"    "$C_RESET" "$1" >&2; }
 say()      { printf '%s\n' "$*" >&2; }
 die()      { printf '%sError:%s %s\n' "$C_RED" "$C_RESET" "$1" >&2; exit "${2:-1}"; }
 

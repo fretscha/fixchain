@@ -255,6 +255,7 @@ else
         log_ok "leaf verifies against the system trust store using the bundled chain"
     else
         log_warn "openssl verify did not return OK:"
+        # shellcheck disable=SC2001 # multi-line prefix; bash ${//} is uglier here
         sed 's/^/      /' <<<"$verify_out"
     fi
 fi
