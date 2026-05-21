@@ -152,6 +152,41 @@ Optional:
   connects. Install GNU coreutils on macOS (`brew install coreutils`)
   to get `gtimeout`.
 
+## Contributing
+
+Patches, bug reports, and ideas are welcome — open an
+[issue](https://github.com/fretscha/fixchain/issues) or a pull request.
+
+A few project-specific conventions:
+
+* **Tests must pass on both macOS and Linux.** The scripts target
+  bash 3.2 (macOS's stock shell) as well as bash 5; avoid bash 4+ only
+  features (`mapfile`/`readarray`, associative arrays, `${var@Q}`,
+  etc.) unless you also add a fallback. The CI matrix runs
+  `ubuntu-latest` and `macos-latest` for every push and PR.
+* **Run the test suite before submitting.**
+  ```bash
+  ./tests/run_all.sh
+  ```
+  If you're adding a new behaviour, add a test for it. Test fixtures
+  build a disposable PKI on the fly — see
+  [`tests/lib/fixtures.sh`](tests/lib/fixtures.sh) for the building
+  blocks.
+* **Keep test identifiers anonymised.** Use only RFC 2606 reserved
+  names (`example.com`, `example.org`, `test.example`, `*.invalid`,
+  `*.localhost`) and the fictional `Example Org` for fixture
+  organisations. Do not commit certificates, keys, or hostnames from
+  real-world systems.
+* **`shellcheck` is encouraged.** If you have it installed, run it
+  against changed files before committing:
+  ```bash
+  shellcheck *.sh tests/*.sh tests/lib/*.sh
+  ```
+* **Don't add external runtime dependencies.** The point of this
+  project is to work with stock `bash` + `openssl`; any new helper
+  should fall back gracefully if a tool isn't present (see how
+  `fetch_chain.sh` handles a missing `timeout` / `gtimeout`).
+
 ## License
 
 MIT.
