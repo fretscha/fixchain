@@ -15,19 +15,6 @@ permissions:
   contents: read
 
 jobs:
-  shellcheck:
-    name: shellcheck
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Show shellcheck version
-        run: shellcheck --version
-
-      - name: Run shellcheck
-        run: shellcheck -x *.sh tests/*.sh tests/lib/*.sh
-
   test:
     name: ${{ matrix.os }}
     runs-on: ${{ matrix.os }}

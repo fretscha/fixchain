@@ -1,6 +1,7 @@
 # fixchain
 
 [![tests](https://github.com/fretscha/fixchain/actions/workflows/tests.yml/badge.svg)](https://github.com/fretscha/fixchain/actions/workflows/tests.yml)
+[![lint](https://github.com/fretscha/fixchain/actions/workflows/lint.yml/badge.svg)](https://github.com/fretscha/fixchain/actions/workflows/lint.yml)
 
 A small set of POSIX-friendly bash + OpenSSL tools for inspecting,
 fetching, and rewriting TLS certificate chains — primarily aimed at
