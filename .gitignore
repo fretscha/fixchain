@@ -1,0 +1,28 @@
+# Editor / OS
+.DS_Store
+*.swp
+*~
+
+# Local working files / artifacts
+*.pem
+*.crt
+*.key
+*.csr
+*.srl
+fullchain*
+cacerts*
+hosts.txt
+
+# Claude Code / IDE local state
+.claude/
+.idea/
+.vscode/
+
+# Test artifacts (the suites use mktemp -d, but stray .pem files
+# generated outside the harness should not be committed)
+tests/work/
+tests/**/*.pem
+tests/**/*.key
+tests/**/*.crt
+tests/**/*.csr
+tests/**/*.srl
